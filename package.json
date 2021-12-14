@@ -1,7 +1,7 @@
 {
-  "name": "nodegit",
+  "name": "@git-glint/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
-  "version": "0.28.0-alpha.10",
+  "version": "0.28.0-alpha.14",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",
@@ -28,7 +28,7 @@
   "main": "dist/nodegit.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nodegit/nodegit.git"
+    "url": "git://github.com/LogicOverSnacks/glint-nodegit.git"
   },
   "directories": {
     "build": "./build",
@@ -85,11 +85,11 @@
     "mochaDebug": "mocha --expose-gc --debug-brk test/runner test/tests --timeout 15000",
     "postinstall": "node lifecycleScripts/postinstall",
     "prepublish": "npm run babel",
-    "rebuild": "node generate && npm run babel && node-gyp configure build",
-    "rebuildDebug": "node generate && npm run babel && node-gyp configure --debug build",
-    "recompile": "node-gyp configure build",
-    "recompileDebug": "node-gyp configure --debug build",
+    "rebuild": "node generate && npm run babel && npx node-gyp configure build",
+    "rebuildDebug": "node generate && npm run babel && npx node-gyp configure --debug build",
+    "recompile": "npx node-gyp configure build",
+    "recompileDebug": "npx node-gyp configure --debug build",
     "test": "npm run lint && node --expose-gc test",
-    "xcodeDebug": "node-gyp configure -- -f xcode"
+    "xcodeDebug": "npx node-gyp configure -- -f xcode"
   }
 }
