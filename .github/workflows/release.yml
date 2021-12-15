@@ -70,4 +70,5 @@ jobs:
           node lifecycleScripts/clean
           npx node-pre-gyp package --runtime=electron
           npx node-pre-gyp-github publish
-          npm publish
+          npm config set _authToken ${NPM_PUBLISH_TOKEN}
+          npm publish --access public
