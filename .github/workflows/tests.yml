@@ -68,7 +68,7 @@ jobs:
         env:
           NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install -g @mapbox/node-pre-gyp node-pre-gyp-github aws-sdk
+          npm install -g @mapbox/node-pre-gyp @mmomtchev/node-pre-gyp-github
           node lifecycleScripts/clean
           node-pre-gyp package
           node-pre-gyp-github publish
@@ -124,7 +124,7 @@ jobs:
         env:
           NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install -g @mapbox/node-pre-gyp node-pre-gyp-github aws-sdk
+          npm install -g @mapbox/node-pre-gyp @mmomtchev/node-pre-gyp-github
           node lifecycleScripts/clean
           node-pre-gyp package
           node-pre-gyp-github publish
@@ -171,7 +171,7 @@ jobs:
       # and it treats each additional step past the first as an orphaned process.
       - name: Deploy (Dependencies)
         if: startsWith(github.ref, 'refs/tags/v')
-        run: npm install -g @mapbox/node-pre-gyp node-pre-gyp-github aws-sdk
+        run: npm install -g @mapbox/node-pre-gyp @mmomtchev/node-pre-gyp-github
 
       - name: Deploy (Clean)
         if: startsWith(github.ref, 'refs/tags/v')
