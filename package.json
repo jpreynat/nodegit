@@ -38,13 +38,13 @@
     "node": ">= 12.19.0 < 13 || >= 14.10.0"
   },
   "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.7",
     "fs-extra": "^7.0.0",
     "got": "^10.7.0",
     "json5": "^2.1.0",
     "lodash": "^4.17.14",
     "nan": "^2.14.1",
     "node-gyp": "^7.1.2",
-    "node-pre-gyp": "^0.13.0",
     "ramda": "^0.25.0",
     "tar-fs": "^1.16.3"
   },
@@ -66,7 +66,8 @@
   "binary": {
     "module_name": "nodegit",
     "module_path": "./build/Release/",
-    "host": "https://axonodegit.s3.amazonaws.com/nodegit/nodegit/"
+    "host": "https://github.com/LogicOverSnacks/glint-nodegit/releases/download/",
+    "remote_path": "{version}"
   },
   "scripts": {
     "babel": "babel --presets es2015 -d ./dist ./lib",
