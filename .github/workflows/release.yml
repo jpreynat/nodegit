@@ -48,7 +48,7 @@ jobs:
       - name: Setup (windows)
         if: matrix.os == 'windows-latest'
         run: |
-          choco install visualstudio2017buildtools visualstudio2017-workload-vctools python2 openssl -y
+          choco install visualstudio2017buildtools visualstudio2017-workload-vctools python2 openssl -y --no-progress
           npm config set msvs_version 2017
           npm config set python python2.7
           npm config set openssl_dir "C:\Program Files\OpenSSL-Win64"
@@ -64,8 +64,10 @@ jobs:
       - name: Deploy
         env:
           NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
           npm install -g @mapbox/node-pre-gyp
           node lifecycleScripts/clean
-          npx node-pre-gyp package
+          npx node-pre-gyp package --runtime=electron
           npx node-pre-gyp-github publish
+          npm publish
