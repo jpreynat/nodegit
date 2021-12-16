@@ -1,7 +1,7 @@
 {
   "name": "@git-glint/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
-  "version": "0.28.0-alpha.16",
+  "version": "0.28.0-alpha.17",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",
@@ -70,7 +70,7 @@
     "remote_path": "{version}"
   },
   "scripts": {
-    "babel": "npx babel-cli --presets es2015 -d ./dist ./lib",
+    "babel": "npx babel --presets es2015 -d ./dist ./lib",
     "cov": "npm run cppcov && npm run filtercov && npm run mergecov",
     "coveralls": "cat ./test/coverage/merged.lcov | coveralls",
     "cppcov": "mkdir -p test/coverage/cpp && ./lcov-1.10/bin/lcov --gcov-tool /usr/bin/gcov-4.9 --capture --directory build/Release/obj.target/nodegit/src --output-file test/coverage/cpp/lcov_full.info",

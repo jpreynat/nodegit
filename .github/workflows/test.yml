@@ -24,7 +24,7 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         with:
-          node-version: 14.16.0
+          node-version: 16.9.1
           check-latest: true
           cache: 'npm'
           cache-dependency-path: package-lock.json
