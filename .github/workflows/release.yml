@@ -64,11 +64,16 @@ jobs:
       - name: Deploy
         env:
           NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
           npm install -g @mapbox/node-pre-gyp
           node lifecycleScripts/clean
           npx node-pre-gyp package --runtime=electron --target=12.0.7
           npx node-pre-gyp-github publish
+
+      - name: Publish
+        if: matrix.os == 'ubuntu-latest'
+        env:
+          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        run: |
           npm config set _authToken ${NPM_PUBLISH_TOKEN}
           npm publish --access public
