@@ -28,7 +28,7 @@ describe("Revwalk", function() {
         test.commit = commit;
       })
       .then(function() {
-        test.walker = this.repository.createRevWalk();
+        test.walker = test.repository.createRevWalk();
         test.walker.sorting(NodeGit.Revwalk.SORT.TIME);
         test.walker.push(test.commit.id());
       });
