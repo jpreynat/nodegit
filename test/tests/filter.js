@@ -640,9 +640,9 @@ describe("Filter", function() {
           );
         })
         .then(function(list) {
-          /* jshint ignore:start */
+          /* eslint-disable */
           return list.applyToData(new String("garbo garbo garbo garbo"));
-          /* jshint ignore:end */
+          /* eslint-enable */
         })
         .then(function(content) {
           assert.equal(content, message);

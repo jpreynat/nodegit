@@ -53,9 +53,9 @@ if (Worker) {
     });
 
     for (let i = 0; i < 5; ++i) {
-      it(`can kill worker thread while in use #${i}`, function(done) { // jshint ignore:line
+      it(`can kill worker thread while in use #${i}`, function(done) { // eslint-disable-line
         const workerPath = local("../utils/worker.js");
-        const worker = new Worker(workerPath, { 
+        const worker = new Worker(workerPath, {
           workerData: {
             clonePath,
             url: "https://github.com/nodegit/test.git"

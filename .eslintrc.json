@@ -1,0 +1,31 @@
+{
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:mocha/recommended",
+    "plugin:node/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": ["mocha", "node"],
+  "rules": {
+    "array-callback-return": "error",
+    "mocha/no-setup-in-describe": "off",
+    "no-empty": "off",
+    "no-mixed-spaces-and-tabs": "off",
+    "no-octal": "off",
+    "no-process-exit": "warn",
+    "no-self-assign": "off",
+    "no-shadow": "off",
+    "no-unexpected-multiline": "off",
+    "no-unused-vars": "off",
+    "node/no-missing-require": "warn",
+    "prefer-const": "warn",
+    "quotes": "off"
+  }
+}
