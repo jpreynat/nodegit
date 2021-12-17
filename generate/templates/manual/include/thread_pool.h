@@ -17,7 +17,7 @@ namespace nodegit {
     public:
       typedef std::function<void()> Callback;
       typedef std::function<void(Callback, Callback)> QueueCallbackFn;
-      typedef std::function<Callback(QueueCallbackFn, Callback)> OnPostCallbackFn;
+      typedef std::function<void(QueueCallbackFn)> OnPostCallbackFn;
 
       // Initializes thread pool and spins up the requested number of threads
       // The provided loop will be used for completion callbacks, whenever
