@@ -61,17 +61,15 @@ jobs:
           CXX: clang++
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
-          electron_version: ${{ matrix.version.electron }}
-        run: npm ci --arch=x64 --runtime=electron --target=${electron_version} --target_arch=x64 --disturl=https://electronjs.org/headers --build_from_source=true
+        run: npm ci --arch=x64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=x64 --disturl=https://electronjs.org/headers --build_from_source=true
 
       - name: Deploy
         env:
           NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          electron_version: ${{ matrix.version.electron }}
         run: |
           npm install -g @mapbox/node-pre-gyp
           node lifecycleScripts/clean
-          npx node-pre-gyp package --runtime=electron --target=${electron_version}
+          npx node-pre-gyp package --runtime=electron --target=${{ matrix.version.electron }}
           npx node-pre-gyp-github publish
 
       - name: Publish
