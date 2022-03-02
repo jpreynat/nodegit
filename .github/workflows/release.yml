@@ -51,8 +51,8 @@ jobs:
       - name: Setup (windows)
         if: matrix.os == 'windows-latest'
         run: |
-          choco install visualstudio2017buildtools visualstudio2017-workload-vctools openssl -y --no-progress
-          npm config set msvs_version 2017
+          choco install visualstudio2022buildtools visualstudio2022-workload-vctools openssl -y --no-progress
+          npm config set msvs_version 2022
           npm config set openssl_dir "C:\Program Files\OpenSSL-Win64"
 
       - name: Install
