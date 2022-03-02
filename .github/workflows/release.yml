@@ -72,6 +72,26 @@ jobs:
           npx node-pre-gyp package --runtime=electron --target=${{ matrix.version.electron }}
           npx node-pre-gyp-github publish
 
+      - name: Install (macos M1)
+        if: matrix.os == 'macos-11'
+        env:
+          CC: clang
+          CXX: clang++
+          CFLAGS: -target arm64-apple-macos11
+          npm_config_clang: 1
+          GYP_DEFINES: use_obsolete_asm=true
+        run: npm ci --arch=arm64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=arm64 --disturl=https://electronjs.org/headers --build_from_source=true
+
+      - name: Deploy (macos M1)
+        if: matrix.os == 'macos-11'
+        env:
+          NODE_PRE_GYP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install -g @mapbox/node-pre-gyp
+          node lifecycleScripts/clean
+          npx node-pre-gyp package --runtime=electron --target=${{ matrix.version.electron }} --arch=arm64 --target_arch=arm64
+          npx node-pre-gyp-github publish
+
       - name: Publish
         if: matrix.os == 'ubuntu-latest'
         env:
