@@ -4083,6 +4083,17 @@
             "isErrorCode": true
           }
         },
+        "git_submodule_clone": {
+          "isAsync": true,
+          "args": {
+            "opts": {
+              "isOptional": true
+            }
+          },
+          "return": {
+            "isErrorCode": true
+          }
+        },
         "git_submodule_head_id": {
           "return": {
             "ownedByThis": true
