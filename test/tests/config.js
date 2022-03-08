@@ -8,11 +8,33 @@ describe("Config", function() {
   var NodeGit = require("../../");
   var Repository = NodeGit.Repository;
   var Config = NodeGit.Config;
+  var ConfigIterator = NodeGit.ConfigIterator;
 
   var reposPath = local("../repos/workdir");
 
   describe("openOnDisk", function() {
     var configPath = path.join(reposPath, ".git/config");
+
+    it("can iterate over config", function() {
+      var repo;
+      var onDiskConfig;
+      return Repository.open(reposPath)
+        .then(function(_repo) {
+          repo = _repo;
+          return Config.openOndisk(configPath);
+        })
+        .then(function(config) {
+          onDiskConfig = config;
+          return ConfigIterator.create(config);
+        })
+        .then(function(iterator) {
+          return iterator.next();
+        })
+        .then(function(val) {
+          assert.equal(val.name(), 'core.repositoryformatversion');
+          assert.equal(val.value(), '0');
+        });
+    });
 
     it("opens the same config as the repo", function() {
       var repo;

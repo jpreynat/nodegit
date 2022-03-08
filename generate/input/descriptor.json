@@ -1057,17 +1057,12 @@
     },
     "config_iterator": {
       "selfFreeing": true,
+      "freeFunctionName": "git_config_iterator_free",
       "fields": {
         "backend": {
           "ignore": true
         },
         "flags": {
-          "ignore": true
-        },
-        "free": {
-          "ignore": true
-        },
-        "next": {
           "ignore": true
         }
       },
@@ -1108,10 +1103,11 @@
           }
         },
         "git_config_next": {
+          "isAsync": true,
           "jsFunctionName": "next",
           "args": {
             "entry": {
-              "ownedByThis": true
+              "isReturn": true
             }
           },
           "return": {
