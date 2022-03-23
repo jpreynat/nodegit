@@ -414,23 +414,6 @@ describe("Clone", function() {
     });
   });
 
-  it("can clone with git", function() {
-    var test = this;
-    var url = "git://github.com/nodegit/test.git";
-    var opts = {
-      fetchOpts: {
-        callbacks: {
-          certificateCheck: () => 0
-        }
-      }
-    };
-
-    return Clone(url, clonePath, opts).then(function(repo) {
-      test.repository = repo;
-      assert.ok(repo instanceof Repository);
-    });
-  });
-
   it("can clone with filesystem", function() {
     var test = this;
     var prefix = process.platform === "win32" ? "" : "file://";
