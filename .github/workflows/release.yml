@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-11, windows-latest]
         version: [
-          { node: 16.13.1, electron: 17.1.2 }
+          { node: 16.13.2, electron: 18.0.4 }
         ]
 
     steps:
