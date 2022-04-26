@@ -106,29 +106,6 @@ describe("Submodule", function() {
       });
   });
 
-  it("can setup and clone submodule", function() {
-    this.timeout(30000);
-
-    var repo = this.repository;
-    var submodulePath = "nodegittest2";
-    var submoduleUrl = "https://github.com/nodegit/test.git";
-
-    var submodule;
-
-    return NodeGit.Submodule.addSetup(repo, submoduleUrl, submodulePath, 0)
-      .then(function(_submodule) {
-        submodule = _submodule;
-
-        return submodule.init(0);
-      })
-      .then(function() {
-        return submodule.clone();
-      })
-      .then(function(repo) {
-        assert.ok(repo instanceof Repository);
-      });
-  });
-
   it("can run sync callback without deadlocking", function() {
     var repo = this.workdirRepository;
     var submodules = [];
@@ -161,6 +138,25 @@ describe("Submodule", function() {
     return Submodule.foreach(repo, submoduleCallback).then(function() {
       assert.equal(submodules.length, 1);
     });
+  });
+
+  it("can setup and clone submodule", function() {
+    this.timeout(30000);
+    var repo = this.repository;
+    var submodulePath = "nodegittest";
+    var submoduleUrl = "https://github.com/nodegit/test.git";
+    var submodule;
+    return NodeGit.Submodule.addSetup(repo, submoduleUrl, submodulePath, 0)
+      .then(function(_submodule) {
+        submodule = _submodule;
+        return submodule.init(0);
+      })
+      .then(function() {
+        return submodule.clone();
+      })
+      .then(function(repo) {
+        assert.ok(repo instanceof Repository);
+      });
   });
 
   it("can setup and finalize submodule add", function() {
