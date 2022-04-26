@@ -16,6 +16,7 @@
   "rules": {
     "array-callback-return": "error",
     "mocha/no-setup-in-describe": "off",
+    "no-constant-condition": "off",
     "no-empty": "off",
     "no-mixed-spaces-and-tabs": "off",
     "no-octal": "off",
