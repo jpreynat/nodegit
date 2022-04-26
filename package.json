@@ -1,7 +1,7 @@
 {
   "name": "@git-glint/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
-  "version": "0.28.0-alpha.25",
+  "version": "0.28.0-alpha.26",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",
@@ -25,7 +25,7 @@
       "email": "tylerw@axosoft.com"
     }
   ],
-  "main": "dist/nodegit.js",
+  "main": "lib/nodegit.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/LogicOverSnacks/glint-nodegit.git"
@@ -44,13 +44,11 @@
     "json5": "^2.2.0",
     "lodash": "^4.17.21",
     "nan": "^2.15.0",
-    "node-gyp": "^9.0.0",
+    "node-gyp": "^8.4.1",
     "ramda": "^0.27.1",
     "tar-fs": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/preset-env": "^7.16.5",
     "@mmomtchev/node-pre-gyp-github": "^2.0.2",
     "cheerio": "^1.0.0-rc.10",
     "clean-for-publish": "~1.0.4",
@@ -72,7 +70,6 @@
     "remote_path": "{version}"
   },
   "scripts": {
-    "babel": "npx babel --presets @babel/env -d ./dist ./lib",
     "cov": "npm run cppcov && npm run filtercov && npm run mergecov",
     "coveralls": "cat ./test/coverage/merged.lcov | coveralls",
     "cppcov": "mkdir -p test/coverage/cpp && ./lcov-1.10/bin/lcov --gcov-tool /usr/bin/gcov-4.9 --capture --directory build/Release/obj.target/nodegit/src --output-file test/coverage/cpp/lcov_full.info",
@@ -85,11 +82,10 @@
     "lint": "eslint lib test/tests test/utils lifecycleScripts",
     "mergecov": "lcov-result-merger 'test/**/*.info' 'test/coverage/merged.lcov' && ./lcov-1.10/bin/genhtml test/coverage/merged.lcov --output-directory test/coverage/report",
     "mocha": "npx mocha --expose-gc test/runner test/tests --timeout 15000",
-    "mochaDebug": "npx mocha --expose-gc --debug-brk test/runner test/tests --timeout 15000",
+    "mochaDebug": "mocha --expose-gc --inspect-brk test/runner test/tests --timeout 15000",
     "postinstall": "node lifecycleScripts/postinstall",
-    "prepublish": "npm run babel",
-    "rebuild": "node generate && npm run babel && npm run recompile",
-    "rebuildDebug": "node generate && npm run babel && npm run recompileDebug",
+    "rebuild": "node generate && node-gyp configure build",
+    "rebuildDebug": "node generate && node-gyp configure --debug build",
     "recompile": "npx node-gyp configure build",
     "recompileDebug": "npx node-gyp configure --debug build",
     "test": "npm run lint && node --expose-gc test",

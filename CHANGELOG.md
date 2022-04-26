@@ -1,5 +1,29 @@
 # Change Log
 
+## <a name="v0-28-0-alpha.13" href="#v0-28-0-alpha-13">v0.28.0-alpha.13</a> [(2022-03-22)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.13)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.12...v0.28.0-alpha.13)
+
+#### Summary of changes
+- Partially fix issue with building for Electron
+
+#### Merged PRs into NodeGit
+- [Fix electron build](https://github.com/nodegit/nodegit/pull/1901)
+
+## <a name="v0-28-0-alpha.12" href="#v0-28-0-alpha-12">v0.28.0-alpha.12</a> [(2022-03-18)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.12)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.11...v0.28.0-alpha.12)
+
+#### Summary of changes
+- Updated CI because of GitHub deprecations
+- Added workaround for LFS performance regression
+
+#### Merged PRs into NodeGit
+- [Update windows 2016 CI to 2019](https://github.com/nodegit/nodegit/pull/1897)
+- [Skip "can clone with git" test, unauthenticated git protocol is no longer supported in Github](https://github.com/nodegit/nodegit/pull/1899)
+- [UNSAFE Temporary workaround for LFS checkout performance regression](https://github.com/nodegit/nodegit/pull/1883)
+- [Update Github Actions for node 16](https://github.com/nodegit/nodegit/pull/1896)
+
 ## <a name="v0-28-0-alpha.11" href="#v0-28-0-alpha-11">v0.28.0-alpha.11</a> [(2022-02-08)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.11)
 
 [Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.10...v0.28.0-alpha.11)
