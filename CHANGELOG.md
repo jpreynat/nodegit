@@ -1,5 +1,59 @@
 # Change Log
 
+## <a name="v0-28-0-alpha.18" href="#v0-28-0-alpha-18">v0.28.0-alpha.18</a> [(2022-05-27)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.18)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.17...v0.28.0-alpha.18)
+
+#### Summary of changes
+- Allow fetching partial patches from diff
+- Fix nanosecond comparison typo
+
+#### Merged PRs into NodeGit
+- [Improve Diff.patches to allow an index array](https://github.com/nodegit/nodegit/pull/1916)
+- [Bring in GIT_USE_NSEC fix](https://github.com/nodegit/nodegit/pull/1917)
+
+## <a name="v0-28-0-alpha.17" href="#v0-28-0-alpha-17">v0.28.0-alpha.17</a> [(2022-05-24)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.17)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.16...v0.28.0-alpha.17)
+
+#### Summary of changes
+- Enable nanosecond precision for file operations
+
+#### Merged PRs into NodeGit
+- [Enable GIT_USE_NSEC](https://github.com/nodegit/nodegit/pull/1912)
+
+## <a name="v0-28-0-alpha.16" href="#v0-28-0-alpha-16">v0.28.0-alpha.16</a> [(2022-05-09)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.16)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.15...v0.28.0-alpha.16)
+
+#### Summary of changes
+- Allow disabling specific filters during checkout
+
+#### Merged PRs into NodeGit
+- [Allow disabling specific filters during checkout](https://github.com/nodegit/nodegit/pull/1911)
+
+## <a name="v0-28-0-alpha.15" href="#v0-28-0-alpha-15">v0.28.0-alpha.15</a> [(2022-05-05)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.15)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.14...v0.28.0-alpha.15)
+
+#### Summary of changes
+- Expose `GIT_OPT_GET_OWNER_VALIDATION` and `GIT_OPT_SET_OWNER_VALIDATION`
+
+#### Merged PRs into NodeGit
+- [Expose get/set owner validation opts](https://github.com/nodegit/nodegit/pull/1910)
+
+## <a name="v0-28-0-alpha.14" href="#v0-28-0-alpha-14">v0.28.0-alpha.14</a> [(2022-05-02)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.14)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.13...v0.28.0-alpha.14)
+
+#### Summary of changes
+- Allow statically linking OpenSSL on Linux
+- Update libgit2 to 1.3.1
+
+#### Merged PRs into NodeGit
+- [Statically compile OpenSSL on linux for electron](https://github.com/nodegit/nodegit/pull/1905)
+- [Upgrade libgit2 to 1.3.1](https://github.com/nodegit/nodegit/pull/1894)
+
 ## <a name="v0-28-0-alpha.13" href="#v0-28-0-alpha-13">v0.28.0-alpha.13</a> [(2022-03-22)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.13)
 
 [Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.12...v0.28.0-alpha.13)
