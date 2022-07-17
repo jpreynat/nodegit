@@ -59,6 +59,7 @@ jobs:
           CXX: clang++
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
+          NODEGIT_OPENSSL_STATIC_LINK: 1
         run: npm ci --arch=x64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=x64 --disturl=https://electronjs.org/headers --build_from_source=true
 
       - name: Deploy
@@ -87,6 +88,7 @@ jobs:
           CFLAGS: -target arm64-apple-macos11
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
+          NODEGIT_OPENSSL_STATIC_LINK: 1
         run: npm ci --arch=arm64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=arm64 --disturl=https://electronjs.org/headers --build_from_source=true
 
       - name: Deploy (macos M1)
