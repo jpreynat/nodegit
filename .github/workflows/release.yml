@@ -37,9 +37,26 @@ jobs:
           sudo add-apt-repository -y ppa:git-core/ppa
           sudo apt-get update
           sudo apt-get install -y git build-essential clang python3 libssl-dev libkrb5-dev libc++-dev
-          npm config set openssl_dir /usr/lib/ssl
+          npm config set openssl_dir ${{ github.workspace }}/openssl-1.1.1q/build
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+      - name: Cache Openssl (linux)
+        if: matrix.os == 'ubuntu-latest'
+        id: cache-openssl
+        uses: actions/cache@v3
+        with:
+          path: openssl-1.1.1q
+          key: ${{ runner.os }}-openssl
+
+      - name: Build Openssl (linux)
+        if: matrix.os == 'ubuntu-latest' && steps.cache-openssl.outputs.cache-hit != 'true'
+        run: |
+          wget -qO- https://www.openssl.org/source/openssl-1.1.1q.tar.gz | tar -xz
+          cd openssl-1.1.1q
+          ./config --prefix=${{ github.workspace }}/openssl-1.1.1q/build --openssldir=${{ github.workspace }}/openssl-1.1.1q/build
+          make
+          make install
 
       - name: Setup (macos)
         if: matrix.os == 'macos-12'
@@ -103,14 +120,16 @@ jobs:
 
       - name: Prepare artifact for upload
         if: matrix.os == 'ubuntu-latest'
-        run: tar -zcf artifact.tar.gz .
+        run: |
+          touch artifact.tar.gz
+          tar -zcf artifact.tar.gz --exclude=artifact.tar.gz .
 
       - name: Upload artifact
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
           name: build-ubuntu
-          path: artifact.tar
+          path: artifact.tar.gz
           if-no-files-found: error
           retention-days: 5
 
