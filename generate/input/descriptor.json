@@ -3981,6 +3981,9 @@
         "git_stash_apply_options_init": {
           "ignore": true
         },
+        "git_stash_save_options_init": {
+          "ignore": true
+        },
         "git_stash_drop": {
           "isAsync": true,
           "return": {
