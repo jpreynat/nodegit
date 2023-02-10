@@ -693,6 +693,19 @@
           "isErrorCode": true
         }
       },
+      "git_patch_to_convenient": {
+        "args": [],
+        "type": "function",
+        "isManual": true,
+        "cFile": "generate/templates/manual/patches/to_convenient.cc",
+        "isAsync": false,
+        "isPrototypeMethod": true,
+        "group": "patch",
+        "return": {
+          "type": "PatchData*",
+          "isErrorCode": false
+        }
+      },
       "git_path_is_gitfile": {
         "type": "function",
         "file": "sys/path.h",
@@ -1221,7 +1234,8 @@
       [
         "patch",
         [
-          "git_patch_convenient_from_diff"
+          "git_patch_convenient_from_diff",
+          "git_patch_to_convenient"
         ]
       ],
       [

@@ -84,7 +84,7 @@ describe("Patch", function() {
   });
 
   it("can generate patch from blobs without 'old_blob'", function() {
-    // Generates a patch for README.md from commit 
+    // Generates a patch for README.md from commit
     // fce88902e66c72b5b93e75bdb5ae717038b221f6 without
     // old_blob. Should show all lines as additions.
     const file = "README.md";
@@ -105,5 +105,27 @@ describe("Patch", function() {
       .then(patch => {
         assert.strictEqual(patch.size(0, 0, 0), 0);
       });
+  });
+
+  it("can create convenient patch from patch", function() {
+    // Generates a patch for README.md from commit
+    // fce88902e66c72b5b93e75bdb5ae717038b221f6
+    const file = "README.md";
+
+    return NodeGit.Blob.lookup(
+      this.repository,
+      "b252f396b17661462372f78b7bcfc403b8731aaa"
+    ).then(blob => {
+      return NodeGit.Blob.lookup(
+        this.repository,
+        "b8d014998072c3f9e4b7eba8486011e80d8de98a"
+      ).then(oldBlob => {
+        return NodeGit.Patch.fromBlobs(oldBlob, file, blob, file)
+          .then(patch => {
+            var conv = patch.toConvenient();
+            assert.equal(conv.size(), patch.numHunks());
+          });
+        });
+    });
   });
 });
