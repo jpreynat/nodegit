@@ -37,7 +37,7 @@ jobs:
           sudo add-apt-repository -y ppa:git-core/ppa
           sudo apt-get update
           sudo apt-get install -y git build-essential clang python3 libssl-dev libkrb5-dev libc++-dev
-          npm config set openssl_dir ${{ github.workspace }}/openssl-1.1.1q/build
+          echo "npm_config_openssl_dir=${{ github.workspace }}/openssl-1.1.1t/build" >> $GITHUB_ENV
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
@@ -46,29 +46,29 @@ jobs:
         id: cache-openssl
         uses: actions/cache@v3
         with:
-          path: openssl-1.1.1q
+          path: openssl-1.1.1t
           key: ${{ runner.os }}-openssl
 
       - name: Build Openssl (linux)
         if: matrix.os == 'ubuntu-latest' && steps.cache-openssl.outputs.cache-hit != 'true'
         run: |
-          wget -qO- https://www.openssl.org/source/openssl-1.1.1q.tar.gz | tar -xz
-          cd openssl-1.1.1q
-          ./config --prefix=${{ github.workspace }}/openssl-1.1.1q/build --openssldir=${{ github.workspace }}/openssl-1.1.1q/build
+          wget -qO- https://www.openssl.org/source/openssl-1.1.1t.tar.gz | tar -xz
+          cd openssl-1.1.1t
+          ./config --prefix=${{ github.workspace }}/openssl-1.1.1t/build --openssldir=${{ github.workspace }}/openssl-1.1.1t/build
           make
           make install
 
       - name: Setup (macos)
         if: matrix.os == 'macos-12'
         run: |
-          npm config set openssl_dir /usr/local/opt/openssl@1.1
+          echo "npm_config_openssl_dir=/usr/local/opt/openssl@1.1" >> $GITHUB_ENV
 
       - name: Setup (windows)
         if: matrix.os == 'windows-latest'
         run: |
           choco install visualstudio2022buildtools visualstudio2022-workload-vctools openssl -y --no-progress
-          npm config set msvs_version 2022
-          npm config set openssl_dir "C:\Program Files\OpenSSL-Win64"
+          echo "npm_config_msvs_version=2022" >> $GITHUB_ENV
+          echo "npm_config_openssl_dir=C:\Program Files\OpenSSL-Win64" >> $GITHUB_ENV
 
       - name: Install
         env:
