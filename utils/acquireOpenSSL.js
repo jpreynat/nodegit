@@ -16,7 +16,7 @@ const pipeline = promisify(stream.pipeline);
 
 const packageJson = require('../package.json')
 
-const OPENSSL_VERSION = "1.1.1t";
+const OPENSSL_VERSION = "1.1.1u";
 const win32BatPath = path.join(__dirname, "build-openssl.bat");
 const vendorPath = path.resolve(__dirname, "..", "vendor");
 const opensslPatchPath = path.join(vendorPath, "patches", "openssl");
@@ -184,7 +184,7 @@ const buildWin32 = async (buildCwd, vsBuildArch) => {
       vcTarget = "VC-WIN32";
       break;
     }
-      
+
     default: {
       throw new Error(`Unknown vsBuildArch: ${vsBuildArch}`);
     }
@@ -310,7 +310,7 @@ const downloadOpenSSLIfNecessary = async ({
     console.log("Skipping OpenSSL download, dir exists");
     return;
   } catch {}
-  
+
   if (maybeDownloadSha256Url) {
     maybeDownloadSha256 = (await got(maybeDownloadSha256Url)).body.trim();
   }
