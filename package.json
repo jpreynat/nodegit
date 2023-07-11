@@ -1,5 +1,5 @@
 {
-  "name": "@git-glint/nodegit",
+  "name": "@jpreynat/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
   "version": "0.28.0-alpha.105",
   "homepage": "http://nodegit.org",
@@ -28,7 +28,7 @@
   "main": "lib/nodegit.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LogicOverSnacks/glint-nodegit.git"
+    "url": "https://github.com/jpreynat/nodegit.git"
   },
   "directories": {
     "build": "./build",
@@ -67,7 +67,7 @@
   "binary": {
     "module_name": "nodegit",
     "module_path": "./build/Release/",
-    "host": "https://github.com/LogicOverSnacks/glint-nodegit/releases/download/",
+    "host": "https://github.com/jpreynat/nodegit/releases/download/",
     "remote_path": "{version}"
   },
   "scripts": {
