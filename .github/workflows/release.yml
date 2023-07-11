@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-12, windows-latest]
         version: [
-          { node: 18.15.0, electron: 25.0.1, openssl: 1.1.1u }
+          { node: 18.16.0, openssl: 1.1.1u }
         ]
 
     steps:
@@ -77,7 +77,7 @@ jobs:
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
           NODEGIT_OPENSSL_STATIC_LINK: 1
-        run: npm ci --arch=x64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=x64 --disturl=https://electronjs.org/headers --build_from_source=true
+        run: npm ci --arch=x64 --target_arch=x64 --build_from_source=true
 
       - name: Deploy
         env:
@@ -85,7 +85,7 @@ jobs:
         run: |
           npm install -g @mapbox/node-pre-gyp
           node lifecycleScripts/clean
-          npx node-pre-gyp package --runtime=electron --target=${{ matrix.version.electron }}
+          npx node-pre-gyp package
           npx node-pre-gyp-github publish
 
       - name: Setup (macos M1)
@@ -106,7 +106,7 @@ jobs:
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
           NODEGIT_OPENSSL_STATIC_LINK: 1
-        run: npm ci --arch=arm64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=arm64 --disturl=https://electronjs.org/headers --build_from_source=true
+        run: npm ci --arch=arm64 --target_arch=arm64 --build_from_source=true
 
       - name: Deploy (macos M1)
         if: matrix.os == 'macos-12'
@@ -115,7 +115,7 @@ jobs:
         run: |
           npm install -g @mapbox/node-pre-gyp
           node lifecycleScripts/clean
-          npx node-pre-gyp package --runtime=electron --target=${{ matrix.version.electron }} --arch=arm64 --target_arch=arm64
+          npx node-pre-gyp package --arch=arm64 --target_arch=arm64
           npx node-pre-gyp-github publish
 
       - name: Prepare artifact for upload
@@ -133,21 +133,21 @@ jobs:
           if-no-files-found: error
           retention-days: 5
 
-  publish:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: build-ubuntu
+  # publish:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Download artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: build-ubuntu
 
-      - name: Extract artifact
-        run: tar -xzf artifact.tar.gz
+  #     - name: Extract artifact
+  #       run: tar -xzf artifact.tar.gz
 
-      - name: Publish
-        env:
-          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_PUBLISH_TOKEN}
-          npm publish --access public
+  #     - name: Publish
+  #       env:
+  #         NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+  #       run: |
+  #         npm config set //registry.npmjs.org/:_authToken ${NPM_PUBLISH_TOKEN}
+  #         npm publish --access public
