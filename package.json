@@ -40,6 +40,7 @@
   "dependencies": {
     "@axosoft/nan": "^2.18.0-gk.1",
     "@mapbox/node-pre-gyp": "^1.0.8",
+    "combyne": "~2.0.0",
     "fs-extra": "^10.0.0",
     "got": "^11.8.6",
     "json5": "^2.2.0",
@@ -54,7 +55,6 @@
     "@mmomtchev/node-pre-gyp-github": "^2.0.2",
     "cheerio": "^1.0.0-rc.10",
     "clean-for-publish": "~1.0.4",
-    "combyne": "~2.0.0",
     "coveralls": "^3.1.1",
     "eslint": "^8.4.1",
     "eslint-plugin-mocha": "^10.1.0",
