@@ -25,14 +25,12 @@ module.exports = function prepareForBuild() {
       }
     )
     .then(function() {
-      if (buildFlags.isGitRepo) {
-        var submodules = require(local("submodules"));
-        var generate = require(local("../generate"));
-        return submodules()
-          .then(function() {
-            return generate();
-          });
-      }
+      var submodules = require(local("submodules"));
+      var generate = require(local("../generate"));
+      return submodules()
+        .then(function() {
+          return generate();
+        });
     });
 };
 

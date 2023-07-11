@@ -46,21 +46,23 @@ module.exports = function install() {
       }
     })
     .then(function() {
-      // If we're using NodeGit from a package manager then let's clean up after
-      // ourselves when we install successfully.
-      if (!buildFlags.mustBuild) {
-        // We can't remove the source files yet because apparently the
-        // "standard workflow" for native node moduels in Electron/nwjs is to
-        // build them for node and then nah eff that noise let's rebuild them
-        // again for the actual platform! Hurray!!! When that madness is dead
-        // we can clean up the source which is a serious amount of data.
-        // fse.removeSync(path.join(rootPath, "vendor"));
-        // fse.removeSync(path.join(rootPath, "src"));
-        // fse.removeSync(path.join(rootPath, "include"));
+      // Always skip cleanup during postinstall to preverve the downloaded binary
 
-        fse.removeSync(path.join(rootPath, "build/Release/*.a"));
-        fse.removeSync(path.join(rootPath, "build/Release/obj.target"));
-      }
+      // // If we're using NodeGit from a package manager then let's clean up after
+      // // ourselves when we install successfully.
+      // if (!buildFlags.mustBuild) {
+      //   // We can't remove the source files yet because apparently the
+      //   // "standard workflow" for native node moduels in Electron/nwjs is to
+      //   // build them for node and then nah eff that noise let's rebuild them
+      //   // again for the actual platform! Hurray!!! When that madness is dead
+      //   // we can clean up the source which is a serious amount of data.
+      //   // fse.removeSync(path.join(rootPath, "vendor"));
+      //   // fse.removeSync(path.join(rootPath, "src"));
+      //   // fse.removeSync(path.join(rootPath, "include"));
+
+      //   fse.removeSync(path.join(rootPath, "build/Release/*.a"));
+      //   fse.removeSync(path.join(rootPath, "build/Release/obj.target"));
+      // }
     });
 };
 
