@@ -1,4 +1,4 @@
-name: Release
+name: Package Test
 
 on: workflow_dispatch
 
