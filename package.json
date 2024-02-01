@@ -35,17 +35,17 @@
     "lib": "./lib"
   },
   "engines": {
-    "node": ">= 14.16.0"
+    "node": ">= 16"
   },
   "dependencies": {
-    "@axosoft/nan": "^2.18.0-gk.1",
+    "@axosoft/nan": "^2.18.0-gk.2",
     "@mapbox/node-pre-gyp": "^1.0.8",
     "fs-extra": "^10.0.0",
     "got": "^11.8.6",
     "json5": "^2.2.0",
     "lodash": "^4.17.21",
     "nan": "^2.15.0",
-    "node-gyp": "^9.3.0",
+    "node-gyp": "^10.0.1",
     "ramda": "^0.27.1",
     "tar-fs": "^2.1.1"
   },
