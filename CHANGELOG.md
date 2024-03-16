@@ -1,5 +1,39 @@
 # Change Log
 
+## <a name="v0-28-0-alpha.24" href="#v0-28-0-alpha-24">v0.28.0-alpha.24</a> [(2024-02-20)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.24)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.23...v0.28.0-alpha.24)
+
+#### Summary of changes
+- Use Collision Detection SHA1 implementation
+- Fix win32 Electron build due to incorrect OpenSSL include path
+
+#### Merged PRs into NodeGit
+- [Use builtin SHA1 for libgit compilation](https://github.com/nodegit/nodegit/pull/1992)
+- [Ensure OpenSSL root included in win32 Electron builds](https://github.com/nodegit/nodegit/pull/1991)
+
+## <a name="v0-28-0-alpha.23" href="#v0-28-0-alpha-23">v0.28.0-alpha.23</a> [(2024-02-14)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.23)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.22...v0.28.0-alpha.23)
+
+#### Summary of changes
+- Bump libgit2 to 1.7.2
+
+#### Merged PRs into NodeGit
+- [Bump libgit2 to 1.7.2](https://github.com/nodegit/nodegit/pull/1990)
+
+## <a name="v0-28-0-alpha.22" href="#v0-28-0-alpha-22">v0.28.0-alpha.22</a> [(2024-02-05)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.22)
+
+[Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.21...v0.28.0-alpha.22)
+
+#### Summary of changes
+- Compatibility with Electron 28
+- NodeGit now requires Node 16+
+
+#### Merged PRs into NodeGit
+- [Fix electron 28 build failure](https://github.com/nodegit/nodegit/pull/1988)
+- [Bump node-gyp to 10.0.1](https://github.com/nodegit/nodegit/pull/1989)
+
 ## <a name="v0-28-0-alpha.21" href="#v0-28-0-alpha-21">v0.28.0-alpha.21</a> [(2023-02-10)](https://github.com/nodegit/nodegit/releases/tag/v0.28.0-alpha.21)
 
 [Full Changelog](https://github.com/nodegit/nodegit/compare/v0.28.0-alpha.20...v0.28.0-alpha.21)
