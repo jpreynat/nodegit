@@ -44,7 +44,7 @@ jobs:
       - name: Cache Openssl (linux)
         if: matrix.os == 'ubuntu-latest'
         id: cache-openssl
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: openssl-${{ matrix.version.openssl }}
           key: ${{ runner.os }}-openssl-${{ matrix.version.openssl }}
@@ -125,7 +125,7 @@ jobs:
 
       - name: Upload artifact
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-ubuntu
           path: artifact.tar.gz
@@ -137,7 +137,7 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-ubuntu
 
