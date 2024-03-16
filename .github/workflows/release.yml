@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         version: [
-          { node: 18.18.2, electron: 28.2.1, openssl: 1.1.1w }
+          { node: 20.9.0, electron: 29.1.4, openssl: 1.1.1w }
         ]
 
     steps:
