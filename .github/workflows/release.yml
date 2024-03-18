@@ -72,7 +72,7 @@ jobs:
       - name: Install
         env:
           CC: clang
-          CXX: clang++
+          CXX: clang++ -static-libgcc -static-libstdc++
           npm_config_clang: 1
           GYP_DEFINES: use_obsolete_asm=true
           NODEGIT_OPENSSL_STATIC_LINK: 1

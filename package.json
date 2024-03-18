@@ -1,7 +1,7 @@
 {
   "name": "@git-glint/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
-  "version": "0.28.0-alpha.109",
+  "version": "0.28.0-alpha.110",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",

@@ -31,6 +31,13 @@ jobs:
           sudo apt-get install -y git build-essential clang python3 libssl-dev libkrb5-dev libc++-dev
           echo "npm_config_openssl_dir=${{ github.workspace }}/openssl-${{ matrix.version.openssl }}/build" >> "$GITHUB_ENV"
 
+      - name: Cache Openssl (linux)
+        id: cache-openssl
+        uses: actions/cache@v4
+        with:
+          path: openssl-${{ matrix.version.openssl }}
+          key: ${{ runner.os }}-openssl-${{ matrix.version.openssl }}
+
       - name: Build Openssl (linux)
         run: |
           wget -qO- https://www.openssl.org/source/openssl-${{ matrix.version.openssl }}.tar.gz | tar -xz
@@ -41,6 +48,10 @@ jobs:
 
       - name: Install
         env:
+          CC: clang
+          CXX: clang++ -static-libgcc -static-libstdc++
+          npm_config_clang: 1
+          GYP_DEFINES: use_obsolete_asm=true
           NODEGIT_OPENSSL_STATIC_LINK: 1
         run: npm ci --arch=x64 --runtime=electron --target=${{ matrix.version.electron }} --target_arch=x64 --disturl=https://electronjs.org/headers --build_from_source=true
 
