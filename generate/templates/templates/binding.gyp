@@ -151,7 +151,10 @@
                 ],
                 "copies": [{
                   "destination": "<(module_root_dir)/build/Release/",
-                  "files": ["<(electron_openssl_root)/bin/libcrypto-3-x64.dll"]
+                  "files": [
+                    "<(electron_openssl_root)/bin/libcrypto-3-x64.dll",
+                    "<(electron_openssl_root)/bin/libssl-3-x64.dll",
+                  ]
                 }]
               }]
             ],
