@@ -24,7 +24,7 @@ jobs:
 
       - name: Setup
         run: |
-          choco install openssl --version 3.2.1 -y --no-progress
+          choco install openssl --version 1.1.1 -y --no-progress
           echo "npm_config_msvs_version=2022" >> $env:GITHUB_ENV
           echo "npm_config_openssl_dir=C:\Program Files\OpenSSL" >> $env:GITHUB_ENV
 

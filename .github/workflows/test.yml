@@ -1,10 +1,10 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - master
-      - backport/*
+  # push:
+  #   branches:
+  #     - master
+  #     - backport/*
   pull_request:
 
 jobs:
