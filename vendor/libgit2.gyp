@@ -477,9 +477,18 @@
                 "<(electron_openssl_root)/include"
               ],
               "libraries": [
-                "<(electron_openssl_root)/lib/libssl.lib",
-                "<(electron_openssl_root)/lib/libcrypto.lib"
-              ]
+                "<(electron_openssl_root)/lib/libssl_static.lib",
+                "<(electron_openssl_root)/lib/libcrypto_static.lib"
+              ],
+                "copies": [{
+                  "destination": "<(module_root_dir)/build/Release/",
+                  "files": [
+                    "<(electron_openssl_root)/bin/libcrypto-1_1-x64.dll",
+                    "<(electron_openssl_root)/bin/libcrypto-3-x64.dll",
+                    "<(electron_openssl_root)/bin/libssl-1_1-x64.dll",
+                    "<(electron_openssl_root)/bin/libssl-3-x64.dll",
+                  ]
+                }]
             }, {
               "defines": [
                 "OPENSSL_NO_RIPEMD",
