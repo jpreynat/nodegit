@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   package:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     strategy:
       matrix:
@@ -22,29 +22,11 @@ jobs:
           node-version: ${{ matrix.version.node }}
           cache: 'npm'
 
-      - name: Setup (linux)
+      - name: Setup
         run: |
-          sudo apt-get update
-          sudo apt-get install -y software-properties-common
-          sudo add-apt-repository -y ppa:git-core/ppa
-          sudo apt-get update
-          sudo apt-get install -y git build-essential clang python3 libssl-dev libkrb5-dev libc++-dev
-          echo "npm_config_openssl_dir=${{ github.workspace }}/openssl-${{ matrix.version.openssl }}/build" >> "$GITHUB_ENV"
-
-      - name: Cache Openssl (linux)
-        id: cache-openssl
-        uses: actions/cache@v4
-        with:
-          path: openssl-${{ matrix.version.openssl }}
-          key: ${{ runner.os }}-openssl-${{ matrix.version.openssl }}
-
-      - name: Build Openssl (linux)
-        run: |
-          wget -qO- https://www.openssl.org/source/openssl-${{ matrix.version.openssl }}.tar.gz | tar -xz
-          cd openssl-${{ matrix.version.openssl }}
-          ./config --prefix=${{ github.workspace }}/openssl-${{ matrix.version.openssl }}/build --openssldir=${{ github.workspace }}/openssl-${{ matrix.version.openssl }}/build
-          make
-          make install
+          choco install openssl --version 3.2.1 -y --no-progress
+          echo "npm_config_msvs_version=2022" >> $env:GITHUB_ENV
+          echo "npm_config_openssl_dir=C:\Program Files\OpenSSL" >> $env:GITHUB_ENV
 
       - name: Install
         env:
@@ -68,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ubuntu-package
+          name: windows-package
           path: artifact.tar.gz
           if-no-files-found: error
           retention-days: 5
