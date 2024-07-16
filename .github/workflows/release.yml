@@ -63,13 +63,6 @@ jobs:
         run: |
           echo "npm_config_openssl_dir=/usr/local/opt/openssl@1.1" >> "$GITHUB_ENV"
 
-      - name: Setup (windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          choco install visualstudio2022buildtools visualstudio2022-workload-vctools openssl -y --no-progress
-          echo "npm_config_msvs_version=2022" >> $env:GITHUB_ENV
-          echo "npm_config_openssl_dir=C:\Program Files\OpenSSL" >> $env:GITHUB_ENV
-
       - name: Install
         env:
           CC: clang
